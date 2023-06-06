@@ -1,0 +1,41 @@
+<canvas id="t_chart"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js"></script>
+<script>
+let t = JSON.parse('<?= $jt ?>');
+let d = JSON.parse('<?= $date ?>');
+
+const ctx = document.getElementById("t_chart");
+const t_chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labers: d,
+        datasets: [
+            {
+                label: '体温',
+                data: t,
+                borderColor: "rgba(255,0,0,1)",
+                backgroundColor: "rgba(0,0,0,0)"
+            }
+        ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: '検温グラフ'
+      },
+      scales: {
+        yAxes: [{
+            ticks: {
+                suggestedMax: 38,
+                suggestedmin: 36,
+                stepSize: 0.5,
+                callback: function(value, index, values){
+                    return value + 'cm'
+                }
+            }
+        }]
+      },
+    }
+});
+</script>

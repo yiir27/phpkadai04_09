@@ -1,0 +1,7 @@
+/* 640px以下の液晶画面で見る時のCSS */
+@media screen and (max-width:640px){
+    .cantainer{
+        display: flex;
+        flex-flow: column;
+    }    
+}
